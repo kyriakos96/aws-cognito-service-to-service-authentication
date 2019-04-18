@@ -6,7 +6,7 @@ aws cognito-idp create-user-pool --pool-name test-servertoserver-userpool
 ```
 Retrieve the `id` from the response. Looks like this: `"Id": "eu-west-1_XXXX"`
 
-# Listing Cognito User Pools if needed
+## Listing Cognito User Pools if needed
 
 ```shell
 aws cognito-idp list-user-pools --max-results 5
@@ -20,6 +20,13 @@ Response:
     "Id": "eu-west-1_XXXX",
     "Name": "test-servertoserver-userpool"
 }
+```
+
+## Tagging Cognito User Pool
+```shell
+aws cognito-idp tag-resource \
+    --resource-arn arn:aws:cognito-idp:eu-west-1:XXXXXXXX:userpool/eu-west-1_XXXXX \
+    --tags env=dev,service=auth,product=service-to-service-auth
 ```
 
 ## Create a Resource Server
